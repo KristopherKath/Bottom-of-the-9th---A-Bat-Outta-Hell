@@ -1,14 +1,13 @@
+/*
+ * Code by Kristopher Kath
+ */
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
-
-/*
- * Make a prefab which contains the text information, its own input action reference
- */
-
 
 //Class that handles logic for rebinding a key
 

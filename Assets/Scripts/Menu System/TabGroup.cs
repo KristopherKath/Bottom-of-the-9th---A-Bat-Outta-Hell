@@ -1,3 +1,7 @@
+/*
+ * Code by Kristopher Kath
+ */
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,17 +9,16 @@ using UnityEngine.UI;
 
 public class TabGroup : MonoBehaviour
 {
-    [Tooltip("The list of tab buttons in the group")]
-    [SerializeField] private List<TabButton> tabButtons;
+    
 
     [SerializeField] private Sprite tabIdle;
     [SerializeField] private Sprite tabHover;
     [SerializeField] private Sprite tabActive;
 
     [Tooltip("The initial active button when page is opened. (Optional)")] 
-    public TabButton initialActiveTab;
+    [SerializeField] private TabButton initialActiveTab;
 
-
+    private List<TabButton> tabButtons; //list of tab buttons subscribed to tab group
     private TabButton selectedTab;
 
 

@@ -1,3 +1,7 @@
+/*
+ * Code by Kristopher Kath
+ */
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -88,8 +92,6 @@ public class SettingsMenu : MonoBehaviour
         Screen.fullScreen = isFullscreen;
     }
 
-
-    // ADDED IN GAME
     public void ExitOptions()
     {
         EventSystem.current.SetSelectedGameObject(null);
