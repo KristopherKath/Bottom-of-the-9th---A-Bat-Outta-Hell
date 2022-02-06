@@ -5,56 +5,53 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     [Header("Player Movement Values")]
+    [Tooltip("The player movement speed")]
     [SerializeField] float speed = 25f;
+
+    [Tooltip("The maximum acceleration value")]
     [SerializeField] float maxAcceleration = 5f;
+
+    [Tooltip("The maximum velocity magnitude value")] 
     [SerializeField] float maxVelocityMag = 100f;
 
     Rigidbody2D rb;
+    Vector2 movementDir;
 
-    PlayerInputActions playerInputActions;
-
-    //Inputs
-    Vector2 movement;
 
     private void Awake()
     {
-        playerInputActions = new PlayerInputActions(); //Create Input Actions object
-        playerInputActions.DisableInput.Enable(); //Enable DisableInputs Map
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+        rb = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        GatherInputValues();
+        //DebugLogs();
     }
 
     private void FixedUpdate()
     {
-        ProcessInput();
-    }
-
-    void GatherInputValues()
-    {
-        movement = playerInputActions.Gameplay.Movement.ReadValue<Vector2>();
-    }
-
-    void ProcessInput()
-    {
         Movement(); //process movement
+    }
+
+    void DebugLogs()
+    {
+        Debug.Log("Player Velocity: " + rb.velocity);
+    }
+
+    //Recieve movement input from PlayerInptHandler
+    public void SetMovementDirection(Vector2 movementInput)
+    {
+        movementDir = movementInput;
     }
 
     void Movement()
     {
         //Get force vector
-        Vector2 force = movement * speed;
+        Vector2 force = movementDir * speed;
 
         if (force == Vector2.zero)
+            //Stop movement
             rb.AddRelativeForce(Vector2.zero, ForceMode2D.Force);
         else
             //Apply acceleration to position
